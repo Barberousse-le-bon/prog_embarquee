@@ -1,0 +1,3 @@
+raspi-gpio get X		pour vaoir le status
+		set X ip op	input output 
+		set X dh dl	high low 
