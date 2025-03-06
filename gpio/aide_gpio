@@ -1,3 +1,7 @@
-raspi-gpio get X		pour vaoir le status
+raspi-gpio 	get X		pour voir le status
 		set X ip op	input output 
 		set X dh dl	high low 
+
+ou 
+
+pinctrl set X ip op dh dl input output driveHigh driveLow
