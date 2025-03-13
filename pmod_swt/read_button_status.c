@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+#include <wiringPi.h>
 
 int main(int argc,char *argv[]){
 
@@ -11,38 +12,74 @@ int main(int argc,char *argv[]){
     //     printf("%s\n",argv[i]);
 
     // }
-    if(strcmp(argv[1], "JA") == 0){
-        system("gpioget gpiochip0 08");
-        system("gpioget gpiochip0 10");
-        system("gpioget gpiochip0 09");
-        system("gpioget gpiochip0 11");
-        system("gpioget gpiochip0 19");
-        system("gpioget gpiochip0 21");
-        system("gpioget gpiochip0 20");
-        system("gpioget gpiochip0 18");
-        printf("JA read \n");
+    if (argc < 2) {
+        fprintf(stderr, "Erreur : Veuillez fournir un argument.\n");
+        return EXIT_FAILURE;
+    }
+    wiringPiSetupGpio();
+    if(strcmp(argv[1], "JA") == 0){ 
+    
+ 
+        int pins[] = {8, 10, 9, 11, 19, 21, 20, 18};  
+        int values[8];  
+        
+        for (int i = 0; i < 8; i++) {  
+            pinMode(pins[i], INPUT);  
+            pullUpDnControl(pins[i], PUD_DOWN);  
+            values[i] = digitalRead(pins[i]);  
+        }
+        
+        for(int i = 0; i < 8; i++){
+
+            printf("%d", values[i]);
+
+        }
+
+
+        printf("\nJA read \n");
     }
     else if(strcmp(argv[1], "JB") == 0){
-        system("gpioget gpiochip0 07");
-        system("gpioget gpiochip0 10");
-        system("gpioget gpiochip0 09");
-        system("gpioget gpiochip0 11");
-        system("gpioget gpiochip0 26");
-        system("gpioget gpiochip0 13");
-        system("gpioget gpiochip0 03");
-        system("gpioget gpiochip0 02");
-        printf("JB read\n");
+
+         
+        int pins[] = {7, 10, 9, 11, 26, 13, 3, 2};  
+        int values[8];  
+        
+        for (int i = 0; i < 8; i++) {  
+            pinMode(pins[i], INPUT);  
+            pullUpDnControl(pins[i], PUD_DOWN);  
+            values[i] = digitalRead(pins[i]);  
+        }
+        
+        for(int i = 0; i < 8; i++){
+
+            printf("%d", values[i]);
+
+        }
+
+
+
+        printf("\nJB read\n");
     }
     else if(strcmp(argv[1], "JC") == 0){
-        system("gpioget gpiochip0 16");
-        system("gpioget gpiochip0 14");
-        system("gpioget gpiochip0 15");
-        system("gpioget gpiochip0 17");
-        system("gpioget gpiochip0 04");
-        system("gpioget gpiochip0 12");
-        system("gpioget gpiochip0 05");
-        system("gpioget gpiochip0 06");
-        printf("JC read\n");
+
+ 
+        int pins[] = {16, 14, 15, 17, 4, 12, 5, 6};  
+        int values[8];  
+        
+        for (int i = 0; i < 8; i++) {  
+            pinMode(pins[i], INPUT);  
+            pullUpDnControl(pins[i], PUD_DOWN);  
+            values[i] = digitalRead(pins[i]);  
+        }
+        
+        for(int i = 0; i < 8; i++){
+
+            printf("%d", values[i]);
+
+        }
+
+
+        printf("\n JC read\n");
     }
     else{
         printf("JA JB or JC expected\n");
