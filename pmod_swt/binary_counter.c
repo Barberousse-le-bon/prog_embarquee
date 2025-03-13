@@ -18,7 +18,7 @@ __uint8_t count = 0;
 
 
     for (int i = 0; i < numPins; i++) {
-                digitalWrite(pins[i], (count >> i) & 1); // Met à jour les LED
+      digitalWrite(pins[i], (count >> i) & 1); // Met à jour les LED
     }
     count++;
     delay(200); 
