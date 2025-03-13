@@ -1,23 +1,26 @@
-#include <wiringPi.h> // Include WiringPi library!
-#include <stdio.h>
+#include <wiringPi.h> 
+
 
 int main(void)
 {
-  // uses BCM numbering of the GPIOs and directly accesses the GPIO registers.
+  
   wiringPiSetupGpio();
+  int pins[] = {8, 10, 9, 11, 19, 21, 20, 18};  
+  int numPins = 8;
 
-  // pin mode ..(INPUT, OUTPUT, PWM_OUTPUT, GPIO_CLOCK)
-  // set pin 17 to input
-  pinMode(17, INPUT);
+  for (int i = 0; i < numPins; i++) {
+    pinMode(pins[i], OUTPUT);
+    digitalWrite(pins[i], LOW);
+}
 
-  // pull up/down mode (PUD_OFF, PUD_UP, PUD_DOWN) => down
-  pullUpDnControl(17, PUD_DOWN);
+__uint8_t count = 0;
+  while (1) {
 
-  // get state of pin 17
-  int value = digitalRead(8);
 
-  if (HIGH == value)
-  {
-    printf("aaaaaaaa");
-  }
+    for (int i = 0; i < numPins; i++) {
+                digitalWrite(pins[i], (count >> i) & 1); // Met à jour les LED
+    }
+    count++;
+    delay(200); 
+}
 }
