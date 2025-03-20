@@ -1,13 +1,12 @@
 Chaque partie des TD et TP sont séparées dans les différents dossiers.
 
-Pour pouvoir exécuter les codes .c il faut :
-
-	- avoir WiringPi d'installé et compilé
-	- compiler les codes avec 
+Pour pouvoir exécuter les codes .c il faut avoir WiringPi d'installé et compilé et compiler les codes avec :
+ 
  ```bash 
  ./make
 ```
-	- lancer le code complié se trouvant dans le répertoire bin
+Ensuite lancer le code complié se trouvant dans le répertoire bin :
+
 ```bash
 ./bin/fichier_a_executer
 ```
