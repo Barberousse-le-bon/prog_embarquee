@@ -8,8 +8,8 @@ int main(int argc,char *argv[]){
 
 
     wiringPiSetupGpio();  
-    int button_pins[] = {16, 14, 15, 17, 4, 12, 5, 6};  
-    int led_pins[] = {8, 10, 9, 11, 19, 21, 20, 18};   
+    int led_pins[] = {16, 14, 15, 17, 4, 12, 5, 6}; //JA
+    int button_pins[] = {8, 10, 9, 11, 19, 21, 20, 18}; //JC
     int values;  
     
     for (int i = 0; i < 8; i++) {  

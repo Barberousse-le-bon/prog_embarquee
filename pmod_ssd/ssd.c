@@ -113,6 +113,21 @@ void nine(int *pin, int numPin){
 }
 
 
+
+void zero(int *pin, int numPin){
+
+  for (int i = 0; i < numPin; i++) {
+      if((pin[i] != 20) && (pin[i] != 18)){
+        digitalWrite(pin[i], HIGH);
+      }
+      else {
+        digitalWrite(pin[i], LOW);
+      }
+    }
+}
+
+
+
 void num_to_display(int number){
 
   int tenth = number/10;
@@ -152,15 +167,15 @@ int main(void)
   eight(pins, numPins);
   delay(500);
   nine(pins, numPins);
-
+  delay(500);
 
   for (int i = 0; i < 5000; i++) {
 
 
-    seven(pins, numPins);
+    one(pins, numPins);
     digitalWrite(18, HIGH);
     delay(1);
-    three(pins, numPins);
+    zero(pins, numPins);
     digitalWrite(18, LOW);
     delay(1);
     
